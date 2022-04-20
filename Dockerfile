@@ -2,10 +2,9 @@ FROM node:14-alpine3.14 as builder
 
 COPY install-base.sh install-base.sh
 COPY install-ibmcloud.sh install-ibmcloud.sh
-ARG GITHUB_TOKEN
 
-RUN GITHUB_TOKEN=$GITHUB_TOKEN ./install-base.sh
-RUN GITHUB_TOKEN=$GITHUB_TOKEN ./install-ibmcloud.sh
+RUN ./install-base.sh
+RUN ./install-ibmcloud.sh
 RUN rm -f install-base.sh install-ibmcloud.sh
 
 RUN mkdir /app
